@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ed">
+  <meta name="description" content="Explore ImamTech Labs open-source projects and find your next contribution.">
+  <title>Open Source at ImamTech Labs</title>
+  <link rel="preconnect" href="https://api.github.com">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="ImamTech Labs home"><span class="mark" aria-hidden="true">I</span><span>IMAMTECH <b>LABS</b></span></a>
+    <nav aria-label="Main navigation"><a href="#projects">Projects</a><a href="#issues">Good first issues</a><a href="#guide">How to contribute</a></nav>
+    <a class="top-link" href="https://github.com/ImamTech-Labs" target="_blank" rel="noreferrer">Visit GitHub <span>↗</span></a>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><i></i> BUILD IN THE OPEN</p>
+        <h1>Make your next<br><em>contribution</em> count.</h1>
+        <p class="intro">Explore practical projects from ImamTech Labs, find a task that fits your skills, and help build software people can use.</p>
+        <div class="actions"><a class="button dark" href="#projects">Explore projects <span>↓</span></a><a class="underlink" href="#guide">New to open source? <span>→</span></a></div>
+        <p class="welcome"><b>✳</b> Curious minds welcome. Every skill level has a place here.</p>
+      </div>
+      <div class="art" aria-hidden="true">
+        <div class="orbit"></div><div class="paper-card"></div>
+        <div class="green-card"><small>OPEN SOURCE<br>IS A TEAM SPORT</small><div class="symbol"><i></i><i></i><i></i></div><strong>ideas become<br>real things.</strong><b>✳</b></div>
+        <span class="float one">● &nbsp; good first issues</span><span class="float two">↗ &nbsp; build together</span>
+      </div>
+      <div class="hero-foot"><span>MADE FOR BUILDERS</span><i></i><span>OPEN SOURCE · SHARED PROGRESS</span></div>
+    </section>
+
+    <section class="stats">
+      <div><strong id="stat-projects">—</strong><span>public projects</span></div>
+      <div><strong id="stat-issues">—</strong><span>open opportunities</span></div>
+      <div><strong id="stat-beginner">—</strong><span>beginner-friendly</span></div>
+      <p>Live from <a href="https://github.com/ImamTech-Labs" target="_blank" rel="noreferrer">the ImamTech Labs GitHub organization ↗</a></p>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-head"><div><p class="eyebrow">THE WORK</p><h2>Projects with room<br>for <em>your ideas.</em></h2></div><p>Find a project you care about. Read its README, explore the code, and join the conversation.</p></div>
+      <div class="tools"><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">Search projects and issues</span><input id="search" type="search" placeholder="Search projects or issues…" autocomplete="off"><kbd>/</kbd></label><small id="project-count">Loading projects…</small></div>
+      <div class="project-grid" id="project-grid" aria-live="polite"><div class="loading"><i></i>Finding projects…</div></div>
+      <p class="hint" id="project-message"></p>
+    </section>
+
+    <section class="section issues" id="issues">
+      <div class="section-head"><div><p class="eyebrow">YOUR NEXT STEP</p><h2>Pick up a <em>good issue.</em></h2></div><div class="section-side"><p>Small, well-scoped tasks help you learn a codebase and meet the community.</p><a class="underlink" href="https://github.com/ImamTech-Labs/open-source-projects/issues" target="_blank" rel="noreferrer">Browse all issues ↗</a></div></div>
+      <div class="filters" role="group" aria-label="Filter issues"><button class="filter active" data-filter="all" type="button">All open issues</button><button class="filter" data-filter="beginner" type="button">✳ Good first issue</button></div>
+      <div id="issue-list" class="issue-list" aria-live="polite"><div class="loading"><i></i>Loading open issues…</div></div>
+      <p class="hint" id="issue-message"></p>
+    </section>
+
+    <section class="guide" id="guide">
+      <div class="guide-head"><div><p class="eyebrow">FIRST CONTRIBUTION?</p><h2>Start where<br><em>you are.</em></h2></div><p>You don't need to know everything to get started. Follow the project's guide, ask questions, and take it one step at a time.</p></div>
+      <div class="steps">
+        <article><small>01</small><div><h3>Find a project</h3><p>Read its README and choose a task that interests you.</p></div><b>↗</b></article>
+        <article><small>02</small><div><h3>Get oriented</h3><p>Check setup notes and ask in the issue if anything is unclear.</p></div><b>⌘</b></article>
+        <article><small>03</small><div><h3>Make it better</h3><p>Work on a branch, follow the project checks, and open a pull request.</p></div><b>✳</b></article>
+      </div>
+      <a class="button light" href="https://github.com/ImamTech-Labs/open-source-projects" target="_blank" rel="noreferrer">Read the contribution guide <span>↗</span></a>
+    </section>
+    <section class="join"><span class="join-star">✳</span><div><p class="eyebrow">GOOD SOFTWARE IS BUILT TOGETHER</p><h2>Bring your perspective.<br><em>Build something useful.</em></h2></div><a class="button dark" href="https://github.com/ImamTech-Labs" target="_blank" rel="noreferrer">Join us on GitHub <span>↗</span></a></section>
+  </main>
+  <footer><a class="brand" href="#"><span class="mark">I</span><span>IMAMTECH <b>LABS</b></span></a><span>Open work. Shared progress.</span><a href="https://github.com/ImamTech-Labs" target="_blank" rel="noreferrer">GitHub ↗</a><small>© <span id="year"></span> ImamTech Labs</small></footer>
+</body>
+</html>
+
