@@ -1,6 +1,6 @@
 const ORG = "ImamTech-Labs";
 const API = "https://api.github.com";
-const state = { repos: [], issues: [], filter: "all", query: "" };
+const state = { repos: [], issues: [], profiles: {}, filter: "all", query: "" };
 const grid = document.querySelector("#project-grid");
 const issueList = document.querySelector("#issue-list");
 const search = document.querySelector("#search");
@@ -22,7 +22,10 @@ function date(value) { return new Intl.DateTimeFormat(undefined, { month: "short
 
 function renderProjects() {
   const q = state.query.toLowerCase();
-  const found = state.repos.filter(function (repo) { return (repo.name + " " + (repo.description || "") + " " + (repo.language || "")).toLowerCase().includes(q); });
+  const found = state.repos.filter(function (repo) {
+    const profile = state.profiles[repo.name] || {};
+    return (repo.name + " " + (profile.purpose || repo.description || "") + " " + (repo.language || "") + " " + (profile.technologies || []).join(" ")).toLowerCase().includes(q);
+  });
   document.querySelector("#stat-projects").textContent = state.repos.length;
   document.querySelector("#project-count").textContent = found.length + (found.length === 1 ? " project" : " projects");
   if (!found.length) {
@@ -30,7 +33,13 @@ function renderProjects() {
     return;
   }
   grid.innerHTML = found.map(function (repo) {
-    return '<article class="project-card"><div class="card-top"><span class="project-icon" aria-hidden="true">⌘</span><span class="language"><i></i>' + safe(repo.language || "Open source") + '</span></div><h3><a href="' + safe(repo.html_url) + '" target="_blank" rel="noreferrer">' + safe(repo.name) + ' <span class="arrow">↗</span></a></h3><p>' + safe(repo.description || "An ImamTech Labs open-source project. Visit the repository to learn more and get involved.") + '</p><div class="meta"><span>☆ ' + Number(repo.stargazers_count || 0).toLocaleString() + '</span><span>⑂ ' + Number(repo.forks_count || 0).toLocaleString() + '</span><span class="open">' + Number(repo.open_issues_count || 0) + ' open items</span></div></article>';
+    const profile = state.profiles[repo.name] || {};
+    const stack = (profile.technologies && profile.technologies.length ? profile.technologies : [repo.language || "Open source"]).slice(0, 4);
+    const badges = stack.map(function (item) { return '<span class="profile-pill">' + safe(item) + '</span>'; }).join("");
+    const setup = profile.setup ? '<p class="setup-note"><b>Setup</b> ' + safe(profile.setup) + '</p>' : '';
+    const difficulty = profile.difficulty || "Explore the README";
+    const issuesUrl = "https://github.com/" + ORG + "/" + encodeURIComponent(repo.name) + "/issues";
+    return '<article class="project-card"><div class="card-top"><span class="project-icon" aria-hidden="true">⌘</span><span class="language"><i></i>' + safe(difficulty) + '</span></div><h3><a href="' + safe(repo.html_url) + '" target="_blank" rel="noreferrer">' + safe(repo.name) + ' <span class="arrow">↗</span></a></h3><p>' + safe(profile.purpose || repo.description || "An ImamTech Labs open-source project. Visit the repository to learn more and get involved.") + '</p><div class="profile-stack">' + badges + '</div>' + setup + '<div class="meta"><span>☆ ' + Number(repo.stargazers_count || 0).toLocaleString() + '</span><span>⑂ ' + Number(repo.forks_count || 0).toLocaleString() + '</span><a class="open" href="' + safe(issuesUrl) + '" target="_blank" rel="noreferrer">' + Number(repo.open_issues_count || 0) + ' open items ↗</a></div></article>';
   }).join("");
 }
 function renderIssues() {
@@ -65,10 +74,13 @@ async function loadIssues() {
 }
 async function load() {
   try {
-    const repos = await github("/orgs/" + ORG + "/repos?type=public&sort=updated&per_page=100");
-    state.repos = repos.filter(function (repo) { return !repo.archived && !repo.fork; });
+    const profileRequest = fetch("project-profiles.json").then(function (response) { return response.ok ? response.json() : {}; }).catch(function () { return {}; });
+    const reposRequest = github("/orgs/" + ORG + "/repos?type=public&sort=updated&per_page=100");
+    const results = await Promise.all([profileRequest, reposRequest]);
+    state.profiles = results[0];
+    state.repos = results[1].filter(function (repo) { return !repo.archived && !repo.fork; });
     renderProjects();
-    document.querySelector("#project-message").textContent = "Project details update from GitHub when you visit this page.";
+    document.querySelector("#project-message").textContent = "Profiles are maintained in project-profiles.json; activity and issues update from GitHub.";
     loadIssues().catch(function (error) {
       issueList.innerHTML = '<div class="issues-empty">' + safe(error.message) + ' Browse <a href="https://github.com/orgs/' + ORG + '/issues">open issues on GitHub</a>.</div>';
     });
@@ -94,4 +106,3 @@ document.addEventListener("keydown", function (event) {
   if (event.key === "Escape" && document.activeElement === search) { search.value = ""; state.query = ""; renderProjects(); renderIssues(); search.blur(); }
 });
 load();
-
