@@ -1,0 +1,8 @@
+{
+  "open-source-projects": {
+    "purpose": "A home for ImamTech Labs open-source projects, with a live hub that helps contributors discover projects and beginner-friendly tasks.",
+    "technologies": ["HTML", "CSS", "JavaScript", "GitHub API"],
+    "difficulty": "Beginner friendly",
+    "setup": "No build step. Serve the repository as static files; see the README."
+  }
+}
