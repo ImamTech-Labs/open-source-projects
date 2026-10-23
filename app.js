@@ -30,7 +30,7 @@ function renderProjects() {
     return;
   }
   grid.innerHTML = found.map(function (repo) {
-    return '<article class="project-card"><div class="card-top"><span class="project-icon" aria-hidden="true">⌘</span><span class="language"><i></i>' + safe(repo.language || "Open source") + '</span></div><h3><a href="' + safe(repo.html_url) + '" target="_blank" rel="noreferrer">' + safe(repo.name) + ' <span class="arrow">↗</span></a></h3><p>' + safe(repo.description || "An ImamTech Labs open-source project. Visit the repository to learn more and get involved.") + '</p><div class="meta"><span>☆ ' + Number(repo.stargazers_count || 0).toLocaleString() + '</span><span>⑂ ' + Number(repo.forks_count || 0).toLocaleString() + '</span><span class="open">' + Number(repo.open_issues_count || 0) + ' open issues</span></div></article>';
+    return '<article class="project-card"><div class="card-top"><span class="project-icon" aria-hidden="true">⌘</span><span class="language"><i></i>' + safe(repo.language || "Open source") + '</span></div><h3><a href="' + safe(repo.html_url) + '" target="_blank" rel="noreferrer">' + safe(repo.name) + ' <span class="arrow">↗</span></a></h3><p>' + safe(repo.description || "An ImamTech Labs open-source project. Visit the repository to learn more and get involved.") + '</p><div class="meta"><span>☆ ' + Number(repo.stargazers_count || 0).toLocaleString() + '</span><span>⑂ ' + Number(repo.forks_count || 0).toLocaleString() + '</span><span class="open">' + Number(repo.open_issues_count || 0) + ' open items</span></div></article>';
   }).join("");
 }
 function renderIssues() {
