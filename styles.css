@@ -67,3 +67,6 @@ a,button{-webkit-tap-highlight-color:transparent}
 }
 @media(min-width:641px) and (max-width:900px){.topbar nav{gap:15px}.topbar nav a{font-size:10px}}
 @media(prefers-reduced-motion:reduce){nav a:after{transition:none}}
+
+.skip-link{position:absolute;left:14px;top:-60px;z-index:50;padding:10px 14px;background:#263d30;color:#fff;border-radius:3px;font-size:11px;text-decoration:none}
+.skip-link:focus{top:12px}
