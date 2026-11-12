@@ -4,6 +4,10 @@ A home for open-source projects maintained by [ImamTech Labs](https://github.com
 
 The goal is to make it easier for developers to collaborate, start with beginner-friendly tasks, and improve useful real-world applications together.
 
+## Roadmap
+
+See [ROADMAP.md](ROADMAP.md) for current projects, priorities, and how maintainers choose upcoming work.
+
 ## Contributing
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request. Each project may also provide its own contribution and testing instructions.
@@ -35,6 +39,7 @@ The site remains dependency-free; the checks use Node.js and Python's standard l
 - `styles.css` contains the responsive design.
 - `app.js` reads public repositories and open issues from the GitHub API for ImamTech-Labs.
 - `project-profiles.json` adds each project's purpose, technologies, difficulty, and setup notes. Add an entry keyed by the repository name to keep its profile visible on the hub.
+- `ROADMAP.md` records current projects and maintainer priorities.
 - `.github/ISSUE_TEMPLATE/` contains structured bug and feature request forms.
 - `.github/workflows/pages.yml` publishes the static site with GitHub Pages after changes reach `main`.
 
