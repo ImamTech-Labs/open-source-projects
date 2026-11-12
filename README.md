@@ -18,6 +18,17 @@ With Python installed, start a local static file server from this repository:
 
 Then visit http://localhost:8000. A local server avoids browser restrictions that can affect GitHub API requests when opening the HTML file directly.
 
+## Automated quality checks
+
+GitHub Actions checks every push and pull request to `main`. The quality workflow verifies JavaScript syntax, validates the project profile JSON, checks local assets referenced by the page, and confirms that JavaScript selectors have matching HTML elements.
+
+Run the same checks locally:
+
+    node --check app.js
+    python scripts/check_site.py
+
+The site remains dependency-free; the checks use Node.js and Python's standard library.
+
 ## Project files
 
 - `index.html` contains the page structure.
