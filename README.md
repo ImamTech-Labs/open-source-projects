@@ -4,6 +4,10 @@ A home for open-source projects maintained by [ImamTech Labs](https://github.com
 
 The goal is to make it easier for developers to collaborate, start with beginner-friendly tasks, and improve useful real-world applications together.
 
+## Contributing
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request. Each project may also provide its own contribution and testing instructions.
+
 ## Run the site locally
 
 The site uses HTML, CSS, and JavaScript. It has no build step or package dependencies.
