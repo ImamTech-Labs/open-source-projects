@@ -21,6 +21,15 @@ If an issue is unclear, ask for clarification before making a large change.
 6. Commit your work with a clear message.
 7. Open a pull request against the repository's `main` branch.
 
+## Run the site checks
+
+Before opening a pull request that changes the project hub, run:
+
+    node --check app.js
+    python scripts/check_site.py
+
+These checks validate JavaScript syntax, project profile data, local page assets, and JavaScript-to-HTML element references. GitHub Actions runs them automatically for pull requests to `main`.
+
 ## Pull request checklist
 
 - [ ] The change addresses an existing issue or explains the problem it solves.
