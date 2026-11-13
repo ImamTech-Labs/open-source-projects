@@ -1,6 +1,7 @@
 const ORG = "ImamTech-Labs";
 const API = "https://api.github.com";
 const state = { repos: [], issues: [], profiles: {}, filter: "all", query: "" };
+const { labels, isBeginnerIssue: beginner, filterProjects, filterIssues } = window.ProjectHubSearch;
 const grid = document.querySelector("#project-grid");
 const issueList = document.querySelector("#issue-list");
 const search = document.querySelector("#search");
@@ -16,16 +17,10 @@ function safe(value) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
   });
 }
-function labels(issue) { return (issue.labels || []).map(function (label) { return typeof label === "string" ? label : label.name; }); }
-function beginner(issue) { return labels(issue).some(function (label) { return /good first issue|beginner[- ]friendly|first-timers-only/i.test(label); }); }
 function date(value) { return new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric" }).format(new Date(value)); }
 
 function renderProjects() {
-  const q = state.query.toLowerCase();
-  const found = state.repos.filter(function (repo) {
-    const profile = state.profiles[repo.name] || {};
-    return (repo.name + " " + (profile.purpose || repo.description || "") + " " + (repo.language || "") + " " + (profile.technologies || []).join(" ")).toLowerCase().includes(q);
-  });
+  const found = filterProjects(state.repos, state.profiles, state.query);
   document.querySelector("#stat-projects").textContent = state.repos.length;
   document.querySelector("#project-count").textContent = found.length + (found.length === 1 ? " project" : " projects");
   if (!found.length) {
@@ -43,11 +38,7 @@ function renderProjects() {
   }).join("");
 }
 function renderIssues() {
-  const q = state.query.toLowerCase();
-  let found = state.issues.filter(function (issue) {
-    const text = (issue.title + " " + issue.repositoryName + " " + (issue.body || "") + " " + labels(issue).join(" ")).toLowerCase();
-    return text.includes(q) && (state.filter !== "beginner" || beginner(issue));
-  });
+  let found = filterIssues(state.issues, state.query, state.filter);
   found.sort(function (a, b) { return Number(beginner(b)) - Number(beginner(a)) || new Date(b.updated_at) - new Date(a.updated_at); });
   document.querySelector("#stat-issues").textContent = state.issues.length;
   document.querySelector("#stat-beginner").textContent = state.issues.filter(beginner).length;
