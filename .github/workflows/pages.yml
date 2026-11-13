@@ -27,7 +27,11 @@ jobs:
         with:
           python-version: "3.12"
       - name: Check JavaScript syntax
-        run: node --check app.js
+        run: |
+          node --check search-utils.js
+          node --check app.js
+      - name: Run search and filtering tests
+        run: node --test scripts/search.test.js
       - name: Validate project profiles and page assets
         run: python scripts/check_site.py
 
