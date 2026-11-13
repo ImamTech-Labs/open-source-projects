@@ -11,14 +11,17 @@
     "setup": "No build step. Serve the repository as static files; see the README."
   },
   "mahmah-naturals": {
-    "purpose": "A small online storefront for MahMah Naturals, with product browsing, a persistent shopping bag, delivery estimates for supported Nigerian locations, and WhatsApp order confirmation.",
+    "purpose": "A real-world cosmetics storefront with product discovery, a shopping bag, WhatsApp order handoff, and a Supabase-backed owner dashboard under active development.",
     "technologies": [
       "HTML",
       "CSS",
       "JavaScript",
-      "Python (local payment prototype)"
+      "Supabase",
+      "Python",
+      "GitHub Actions",
+      "Cloudflare Pages"
     ],
-    "difficulty": "Beginner friendly",
-    "setup": "Run python -m http.server 8000 in the repository folder and open http://localhost:8000. See the repository README for the current WhatsApp ordering flow."
+    "difficulty": "Intermediate",
+    "setup": "Run python -m http.server 8000 from the repository folder. See the MahMah Naturals README for the WhatsApp order flow, Supabase setup requirements, tests, and deployment notes."
   }
 }
