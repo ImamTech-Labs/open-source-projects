@@ -25,10 +25,12 @@ If an issue is unclear, ask for clarification before making a large change.
 
 Before opening a pull request that changes the project hub, run:
 
+    node --check search-utils.js
     node --check app.js
+    node --test scripts/search.test.js
     python scripts/check_site.py
 
-These checks validate JavaScript syntax, project profile data, local page assets, and JavaScript-to-HTML element references. GitHub Actions runs them automatically for pull requests to `main`.
+These checks validate JavaScript syntax, project and issue search behaviour, project profile data, local page assets, and JavaScript-to-HTML element references. GitHub Actions runs them automatically for pull requests to `main`.
 
 ## Pull request checklist
 
