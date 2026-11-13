@@ -31,7 +31,7 @@ Run the same checks locally:
     node --check app.js
     python scripts/check_site.py
 
-The site remains dependency-free; the checks use Node.js and Python's standard library.
+The site remains dependency-free; the checks use Node.js and Python's standard library. The search and issue-filter helpers are also covered by Node's built-in test runner (`node --test scripts/search.test.js`).
 
 ## Project files
 
