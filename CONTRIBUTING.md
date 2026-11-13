@@ -39,6 +39,14 @@ These checks validate JavaScript syntax, project profile data, local page assets
 - [ ] No passwords, API keys, tokens, or private user data are included.
 - [ ] The pull request explains the change and how it was tested.
 
+## Pull request template
+
+When you open a pull request, use the repository's pull request template to describe the change, link its issue, and record the checks you ran.
+
+## Community guidelines
+
+All contributors are expected to follow the [ImamTech Labs community guidelines](COMMUNITY_GUIDELINES.md).
+
 ## Communication
 
 Be respectful, constructive, and patient. Maintainers may request changes or clarification before merging a contribution.
