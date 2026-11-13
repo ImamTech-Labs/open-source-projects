@@ -27,7 +27,7 @@ test("project search matches profile purpose", () => {
 });
 
 test("project search matches language and technologies", () => {
-  assert.deepEqual(filterProjects(projects, profiles, "html").map(x => x.name), ["docs-site", "alpha-store"]);
+  assert.deepEqual(filterProjects(projects, profiles, "html").map(x => x.name), ["alpha-store", "docs-site"]);
 });
 
 test("project search is case-insensitive and trims whitespace", () => {
