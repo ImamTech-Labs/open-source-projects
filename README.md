@@ -10,7 +10,7 @@ See [ROADMAP.md](ROADMAP.md) for current projects, priorities, and how maintaine
 
 ## Contributing
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request. Each project may also provide its own contribution and testing instructions.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request. Our [community guidelines](COMMUNITY_GUIDELINES.md) explain how we keep collaboration respectful. Each project may also provide its own contribution and testing instructions.
 
 ## Run the site locally
 
